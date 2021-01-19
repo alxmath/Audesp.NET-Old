@@ -88,6 +88,7 @@ namespace Audesp.NET
             this.txtProcesso.Name = "txtProcesso";
             this.txtProcesso.Size = new System.Drawing.Size(125, 23);
             this.txtProcesso.TabIndex = 5;
+            this.txtProcesso.TextChanged += new System.EventHandler(this.txtProcesso_TextChanged);
             // 
             // dgvEmpenhos
             // 
@@ -141,7 +142,6 @@ namespace Audesp.NET
             this.lblNotificacoes.Name = "lblNotificacoes";
             this.lblNotificacoes.Size = new System.Drawing.Size(1264, 31);
             this.lblNotificacoes.TabIndex = 1;
-            this.lblNotificacoes.Text = "Notificações";
             this.lblNotificacoes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // StatusStripMain
@@ -163,7 +163,7 @@ namespace Audesp.NET
             this.Controls.Add(this.TabControlPrincipal);
             this.Name = "FormSCT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Audesp.NET";
             this.TabControlPrincipal.ResumeLayout(false);
             this.TabAjuste.ResumeLayout(false);
             this.TabAjuste.PerformLayout();
