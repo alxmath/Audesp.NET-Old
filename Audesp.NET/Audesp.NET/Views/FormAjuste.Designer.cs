@@ -39,15 +39,15 @@ namespace Audesp.NET.Views
             this.txtCodigoAudespLicitacao = new System.Windows.Forms.TextBox();
             this.groupLotes = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvLotesAjuste = new System.Windows.Forms.DataGridView();
+            this.dgvLotesLicitacao = new System.Windows.Forms.DataGridView();
             this.lblNotificacoes = new System.Windows.Forms.Label();
             this.btnTransmitir = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupLotes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLotesAjuste)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLotesLicitacao)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,8 +116,8 @@ namespace Audesp.NET.Views
             // groupLotes
             // 
             this.groupLotes.Controls.Add(this.button1);
-            this.groupLotes.Controls.Add(this.dataGridView2);
-            this.groupLotes.Controls.Add(this.dataGridView1);
+            this.groupLotes.Controls.Add(this.dgvLotesAjuste);
+            this.groupLotes.Controls.Add(this.dgvLotesLicitacao);
             this.groupLotes.Location = new System.Drawing.Point(13, 126);
             this.groupLotes.Name = "groupLotes";
             this.groupLotes.Size = new System.Drawing.Size(701, 333);
@@ -128,31 +128,35 @@ namespace Audesp.NET.Views
             // button1
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(425, 173);
+            this.button1.Location = new System.Drawing.Point(383, 173);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(44, 26);
             this.button1.TabIndex = 3;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dgvLotesAjuste
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(473, 57);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(187, 258);
-            this.dataGridView2.TabIndex = 1;
+            this.dgvLotesAjuste.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLotesAjuste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLotesAjuste.Location = new System.Drawing.Point(433, 57);
+            this.dgvLotesAjuste.Name = "dgvLotesAjuste";
+            this.dgvLotesAjuste.RowTemplate.Height = 25;
+            this.dgvLotesAjuste.Size = new System.Drawing.Size(227, 258);
+            this.dgvLotesAjuste.TabIndex = 1;
             // 
-            // dataGridView1
+            // dgvLotesLicitacao
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(40, 57);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(379, 258);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvLotesLicitacao.AllowUserToAddRows = false;
+            this.dgvLotesLicitacao.AllowUserToDeleteRows = false;
+            this.dgvLotesLicitacao.AllowUserToResizeRows = false;
+            this.dgvLotesLicitacao.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLotesLicitacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLotesLicitacao.Location = new System.Drawing.Point(40, 57);
+            this.dgvLotesLicitacao.Name = "dgvLotesLicitacao";
+            this.dgvLotesLicitacao.RowHeadersVisible = false;
+            this.dgvLotesLicitacao.RowTemplate.Height = 25;
+            this.dgvLotesLicitacao.Size = new System.Drawing.Size(338, 258);
+            this.dgvLotesLicitacao.TabIndex = 0;
             // 
             // lblNotificacoes
             // 
@@ -226,8 +230,8 @@ namespace Audesp.NET.Views
             this.Text = "Audesp.NET - Ajuste";
             this.Load += new System.EventHandler(this.FormAjuste_Load);
             this.groupLotes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLotesAjuste)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLotesLicitacao)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -247,8 +251,8 @@ namespace Audesp.NET.Views
         private System.Windows.Forms.Label lblNotificacoes;
         private System.Windows.Forms.Button btnTransmitir;
         private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvLotesAjuste;
+        private System.Windows.Forms.DataGridView dgvLotesLicitacao;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
     }
