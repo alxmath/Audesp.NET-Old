@@ -26,6 +26,7 @@ namespace Audesp.NET.Controllers
             }
 
             Licitacao licitacao = new Licitacao();
+            Lote lote = new Lote();
 
             HtmlNodeCollection lotes = doc.DocumentNode.SelectNodes("//td");
             licitacao.NumeroLicitacao = doc.DocumentNode.SelectSingleNode("//*[@id='id_Cabecalho_Processo']/div/div[1]/span").InnerText.Trim();
@@ -43,7 +44,24 @@ namespace Audesp.NET.Controllers
                     {
                         if (lotes[i].InnerText.IndexOf("-Grupo") != -1)
                         {
+                            licitacao.Tipo = "L"; // por lotes
+                           
+                            //******************************
+                            int indexOfQuantidade = lotes[i].InnerText.LastIndexOf("Quantidade");
+                            string secaoQuantidadePreco = lotes[i].InnerText.Substring(indexOfQuantidade).Trim();
 
+                            indexOfColon = secaoQuantidadePreco.IndexOf(":");
+                            int indexOfSlash = secaoQuantidadePreco.IndexOf("-");
+                            int indexOfCifrao = secaoQuantidadePreco.IndexOf("R$");
+
+                            lote.Sequencia = contador;
+                            lote.LoteSiafisico = contador.ToString();
+                            lote.Quantidade = Convert.ToDouble(secaoQuantidadePreco.Substring(indexOfColon + 1, (indexOfSlash - 1) - (indexOfColon + 1)).Trim());
+                            lote.ValorNegociado = Convert.ToDecimal(secaoQuantidadePreco.Substring(indexOfCifrao + 2).Trim());
+                            //******************************
+
+                            licitacao.Add(lote);
+                            contador++;
                         }
                         else
                         {
@@ -52,7 +70,6 @@ namespace Audesp.NET.Controllers
                             int indexOfSlash = lotes[i].InnerText.IndexOf("-");
                             indexOfColon = lotes[i].InnerText.IndexOf(":");
 
-                            Lote lote = new Lote();
                             lote.LoteSiafisico = lotes[i].InnerText
                                 .Substring(indexOfColon + 1, (indexOfSlash - 1) - (indexOfColon + 1)).Trim();
 
@@ -71,7 +88,6 @@ namespace Audesp.NET.Controllers
                             contador++;
                         }
                     }                                                                                            
-
                 }
             }
 

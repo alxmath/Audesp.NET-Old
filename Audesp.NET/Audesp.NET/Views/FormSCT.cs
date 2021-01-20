@@ -152,7 +152,16 @@ namespace Audesp.NET
 
             if (e.ColumnIndex == 12)
             {
+                lblNotificacoes.Text = string.Empty;
+
                 Empenho currentEmpenho = (Empenho)dgvEmpenhos.CurrentRow.DataBoundItem;
+
+                if (currentEmpenho.Situacao != "-")
+                {
+                    lblNotificacoes.Text = $"[INFO]: Ajuste já transmitido: {currentEmpenho.DataTransmissao}";
+                    return;
+                }
+
                 var formAjuste = new FormAjuste(currentEmpenho);
                 formAjuste.ShowDialog();
 
@@ -160,21 +169,25 @@ namespace Audesp.NET
 
             if (e.ColumnIndex == 13)
             {
+                lblNotificacoes.Text = string.Empty;
                 lblNotificacoes.Text = "Empenho";
             }
 
             if (e.ColumnIndex == 14)
             {
+                lblNotificacoes.Text = string.Empty;
                 lblNotificacoes.Text = "Execução";
             }
 
             if (e.ColumnIndex == 15)
             {
+                lblNotificacoes.Text = string.Empty;
                 lblNotificacoes.Text = "Documento Fiscal";
             }
 
             if (e.ColumnIndex == 16)
             {
+                lblNotificacoes.Text = string.Empty;
                 lblNotificacoes.Text = "Pagamento";
             }
         }

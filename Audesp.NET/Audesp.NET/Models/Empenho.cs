@@ -5,76 +5,81 @@ using System.Text;
 
 namespace Audesp.NET.Models
 {
-    public class Empenho
+    public class Empenho : ModuloAudesp
     {
-        [DisplayName("Empenho")]
+        public enum TipoAjuste
+        {
+            Contrato, // 0
+            Empenho  //  1
+        }
+
+        public enum TipoDocumento
+        {
+            Cnpj,
+            Cpf,
+            OutroDoc
+        }
+
+        public enum Vigencia
+        {
+            Meses,
+            Data
+        }
+
         public string NumeroEmpenho { get; set; }
-
-        [DisplayName("Tipo Licit.")]
         public string TipoLicitacao { get; set; }
-
-        [DisplayName("Licit.")]
         public string NumeroLicitacao { get; set; }
-
-        [DisplayName("Emissão")]
         public DateTime Emissao { get; set; }
-
-        [DisplayName("Credor")]
         public string CredorDocumento { get; set; }
-
-        [DisplayName("Fonte Rec.")]
         public string FonteRecursos { get; set; }
-
-        [DisplayName("Nat. Desp.")]
         public string NaturezaDespesa { get; set; }
-
-        [DisplayName("Processo")]
         public string Processo { get; set; }
-
-        [DisplayName("Valor")]
         public decimal Valor { get; set; }
-
-        [DisplayName("Modalidade")]
-        public string Modalidade { get; set; }
-
-        [DisplayName("Qtd. Contrato")]
-        public double QuantidadeContrato { get; set; }
-
-        [DisplayName("Und. Contrato")]
-        public string UnidadeContrato { get; set; }
-
-        [DisplayName("Entrega")]
+        public TipoAjuste Modalidade { get; set; }
         public DateTime DataEstimadaEntrega { get; set; }
-
-        [DisplayName("Cod. Ajuste")]
         public string CodigoAjuste { get; set; }
-
-        [DisplayName("Pacote")]
-        public string Pacote { get; set; }
-
-        public string Documento { get; set; }
-
-        [DisplayName("Situação")]
-        public string Situacao { get; set; }
-
-        [DisplayName("Vlr. Exec.")]
+        public string CodigoAudespLicitacao { get; set; }
         public decimal ValorExecucoes { get; set; }
-
-        [DisplayName("Vlr. NFs")]
         public decimal ValorNfs { get; set; }
-
-        [DisplayName("Vlr. Pgtos")]
         public decimal ValorPagamentos { get; set; }
-
-        [DisplayName("Vlr. Rec.")]
         public decimal ValorRecolhimentos { get; set; }
-
-        [DisplayName("Vlr. Canc.")]
         public decimal ValorCancelamentos { get; set; }
-
-        [DisplayName("Encerrado")]
-        public bool IsEncerrado { get; set; }
-
         public List<EmpenhoItem> Itens { get; set; } = new List<EmpenhoItem>();
+        public TipoDocumento TipoDocumentoCredor
+        {
+            get  
+            {
+                if(CredorDocumento.Length == 11)
+                {
+                    return TipoDocumento.Cpf; 
+
+                }
+                else if (CredorDocumento.Length == 14)
+                {
+                    return TipoDocumento.Cnpj;
+                }
+                else
+                {
+                    return TipoDocumento.OutroDoc;
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"Número: {NumeroEmpenho}\nTipo da licitação: {TipoLicitacao}\n" +
+                   $"Número da licitação: {NumeroLicitacao}\nEmissão:: {Emissao}\n" +
+                   $"Documento do credor: {CredorDocumento}\nTipo do documento: {TipoDocumentoCredor}\n" +
+                   $"Fonte de recursos: {FonteRecursos}\nNatureza de despesa: {NaturezaDespesa}\n" +
+                   $"Processo: {Processo}\nValor: {Valor}\nModalidade: {Modalidade}\n" +
+                   $"Entrega: {DataEstimadaEntrega}\nCódigo do ajuste: {CodigoAjuste}\n" +
+                   $"Código Audesp Licitação: {CodigoAudespLicitacao}\n" +
+                   $"Pacote: {Pacote}\nDocumento: {Documento}\nData Transmissao: {null}\n" +
+                   $"Situação: {Situacao}\nEncerrado: {IsEncerrado}\n" +
+                   $"Valor da execuções: {ValorExecucoes}\nValor dos documentos fiscais: {ValorNfs}\n" +
+                   $"Valor dos pagamentos: {ValorPagamentos}\nValor dos recolhimentos: {ValorRecolhimentos}\n" +
+                   $"Valor dos cancelamentos: {ValorCancelamentos}";
+        }
+
     }
 }

@@ -47,6 +47,7 @@ namespace Audesp.NET.Views
             this.btnTransmitir = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkPreVisualizarXml = new System.Windows.Forms.LinkLabel();
             this.groupLotes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLotesAjuste)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLotesLicitacao)).BeginInit();
@@ -133,7 +134,7 @@ namespace Audesp.NET.Views
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(433, 39);
+            this.label5.Location = new System.Drawing.Point(448, 39);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 15);
             this.label5.TabIndex = 4;
@@ -142,7 +143,7 @@ namespace Audesp.NET.Views
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 39);
+            this.label4.Location = new System.Drawing.Point(37, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 15);
             this.label4.TabIndex = 4;
@@ -151,7 +152,7 @@ namespace Audesp.NET.Views
             // btnAddAll
             // 
             this.btnAddAll.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAll.Image")));
-            this.btnAddAll.Location = new System.Drawing.Point(383, 173);
+            this.btnAddAll.Location = new System.Drawing.Point(401, 172);
             this.btnAddAll.Name = "btnAddAll";
             this.btnAddAll.Size = new System.Drawing.Size(44, 26);
             this.btnAddAll.TabIndex = 3;
@@ -165,12 +166,12 @@ namespace Audesp.NET.Views
             this.dgvLotesAjuste.AllowUserToResizeRows = false;
             this.dgvLotesAjuste.BackgroundColor = System.Drawing.Color.White;
             this.dgvLotesAjuste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLotesAjuste.Location = new System.Drawing.Point(433, 57);
+            this.dgvLotesAjuste.Location = new System.Drawing.Point(448, 57);
             this.dgvLotesAjuste.Name = "dgvLotesAjuste";
             this.dgvLotesAjuste.RowHeadersVisible = false;
             this.dgvLotesAjuste.RowTemplate.Height = 25;
             this.dgvLotesAjuste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLotesAjuste.Size = new System.Drawing.Size(227, 258);
+            this.dgvLotesAjuste.Size = new System.Drawing.Size(215, 258);
             this.dgvLotesAjuste.TabIndex = 1;
             this.dgvLotesAjuste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLotesAjuste_CellContentClick);
             // 
@@ -181,11 +182,11 @@ namespace Audesp.NET.Views
             this.dgvLotesLicitacao.AllowUserToResizeRows = false;
             this.dgvLotesLicitacao.BackgroundColor = System.Drawing.Color.White;
             this.dgvLotesLicitacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLotesLicitacao.Location = new System.Drawing.Point(40, 57);
+            this.dgvLotesLicitacao.Location = new System.Drawing.Point(37, 57);
             this.dgvLotesLicitacao.Name = "dgvLotesLicitacao";
             this.dgvLotesLicitacao.RowHeadersVisible = false;
             this.dgvLotesLicitacao.RowTemplate.Height = 25;
-            this.dgvLotesLicitacao.Size = new System.Drawing.Size(338, 258);
+            this.dgvLotesLicitacao.Size = new System.Drawing.Size(349, 258);
             this.dgvLotesLicitacao.TabIndex = 0;
             this.dgvLotesLicitacao.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLotesLicitacao_CellContentClick);
             // 
@@ -244,11 +245,22 @@ namespace Audesp.NET.Views
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
+            // linkPreVisualizarXml
+            // 
+            this.linkPreVisualizarXml.AutoSize = true;
+            this.linkPreVisualizarXml.Location = new System.Drawing.Point(155, 474);
+            this.linkPreVisualizarXml.Name = "linkPreVisualizarXml";
+            this.linkPreVisualizarXml.Size = new System.Drawing.Size(104, 15);
+            this.linkPreVisualizarXml.TabIndex = 9;
+            this.linkPreVisualizarXml.TabStop = true;
+            this.linkPreVisualizarXml.Text = "Pré-visualizar XML";
+            // 
             // FormAjuste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 511);
+            this.Controls.Add(this.linkPreVisualizarXml);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnTransmitir);
@@ -267,6 +279,7 @@ namespace Audesp.NET.Views
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -289,5 +302,6 @@ namespace Audesp.NET.Views
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.LinkLabel linkPreVisualizarXml;
     }
 }

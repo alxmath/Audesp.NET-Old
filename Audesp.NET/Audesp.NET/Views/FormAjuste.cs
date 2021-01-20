@@ -46,10 +46,18 @@ namespace Audesp.NET.Views
                 return;
             }
 
-            foreach (Lote item in LotesAjuste)
-            {
-                MessageBox.Show(item.ToString());
-            }
+            // MessageBox.Show(Empenho.ToString());
+
+            /***
+             * TODO: se tipo for contrato, buscar dados;
+             */
+
+            Empenho.CodigoAudespLicitacao = txtCodigoAudespLicitacao.Text.Trim();
+            Empenho.NumeroLicitacao = txtLicitacao.Text.Trim();
+
+            AjusteXML ajusteXML = new AjusteXML(Empenho);
+            ajusteXML.GerarXML();
+
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -69,6 +77,7 @@ namespace Audesp.NET.Views
             txtLicitacao.Text = licitacao.NumeroLicitacao;
             txtCodigoAudespLicitacao.Text = licitacao.CodigoAudespLicitacao;
 
+            if (licitacao.Tipo == "L") lblNotificacoes.Text = "<< Licitação por Lotes >>";
             Lotes = licitacao.Lotes;
 
             Fill();
@@ -96,7 +105,7 @@ namespace Audesp.NET.Views
             dgvLotesLicitacao.Columns[3].Name = "Valor";
             dgvLotesLicitacao.Columns[3].DataPropertyName = "ValorNegociado";
             dgvLotesLicitacao.Columns[3].DefaultCellStyle.Format = "C2";
-            dgvLotesLicitacao.Columns[3].Width = 65;
+            dgvLotesLicitacao.Columns[3].Width = 75;
 
             DataGridViewButtonColumn colAction = new DataGridViewButtonColumn();
             colAction.UseColumnTextForButtonValue = true;
@@ -113,7 +122,7 @@ namespace Audesp.NET.Views
         {
             lblNotificacoes.Text = string.Empty;
 
-            if (dgvLotesAjuste.Rows.Count == 0) return;
+            if (dgvLotesLicitacao.Rows.Count == 0) return;
 
             LotesAjuste = new BindingList<Lote>(Lotes);
             FillLoteAjuste(LotesAjuste);
@@ -131,7 +140,7 @@ namespace Audesp.NET.Views
 
             dgvLotesAjuste.Columns[1].Name = "Siafisico";
             dgvLotesAjuste.Columns[1].DataPropertyName = "LoteSiafisico";
-            dgvLotesAjuste.Columns[1].Width = 70;
+            dgvLotesAjuste.Columns[1].Width = 60;
 
             DataGridViewButtonColumn colAction = new DataGridViewButtonColumn();
             colAction.UseColumnTextForButtonValue = true;
