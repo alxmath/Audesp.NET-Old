@@ -16,6 +16,9 @@ namespace Audesp.NET.Views
 
         public FormAjusteController AjusteController { get; } = new FormAjusteController();
         public Empenho Empenho { get; set; }
+        public List<Lote> Lotes { get; set; } = new List<Lote>();
+        public BindingList<Lote> LotesAjuste { get; set; }
+
         public FormAjuste(Empenho empenho)
         {
             InitializeComponent();
@@ -29,10 +32,23 @@ namespace Audesp.NET.Views
 
         private void btnTransmitir_Click(object sender, EventArgs e)
         {
+            lblNotificacoes.Text = string.Empty;
+
             if (string.IsNullOrEmpty(txtEmpenho.Text.Trim()))
             {
                 lblNotificacoes.Text = "Favor preencher o número do empenho.";
                 txtEmpenho.Focus();
+            }
+
+            if (dgvLotesAjuste.Rows.Count == 0)
+            {
+                lblNotificacoes.Text = "Favor selecionar os itens do ajuste.";
+                return;
+            }
+
+            foreach (Lote item in LotesAjuste)
+            {
+                MessageBox.Show(item.ToString());
             }
         }
 
@@ -43,19 +59,22 @@ namespace Audesp.NET.Views
 
         private void btnPreencherLotes_Click(object sender, EventArgs e)
         {
+            lblNotificacoes.Text = string.Empty;
+            dgvLotesAjuste.DataSource = null;
+
             var licitacao = AjusteController.ParseLicitacaoFromHtml();
 
             if (licitacao == null) return;
 
             txtLicitacao.Text = licitacao.NumeroLicitacao;
-            txtCodigoAudespLicitacao.Text = licitacao.NumeroLicitacao;
+            txtCodigoAudespLicitacao.Text = licitacao.CodigoAudespLicitacao;
 
-            Fill(licitacao.Lotes);
+            Lotes = licitacao.Lotes;
 
-            
+            Fill();
         }
 
-        private void Fill(List<Lote> lotes)
+        private void Fill()
         {
             dgvLotesLicitacao.DataSource = null;
             dgvLotesLicitacao.AutoGenerateColumns = false;
@@ -85,9 +104,94 @@ namespace Audesp.NET.Views
             colAction.Width = 75;
             dgvLotesLicitacao.Columns.Add(colAction);
 
-            dgvLotesLicitacao.DataSource = lotes;
+            dgvLotesLicitacao.DataSource = Lotes;
 
 
+        }
+
+        private void btnAddAll_Click(object sender, EventArgs e)
+        {
+            lblNotificacoes.Text = string.Empty;
+
+            if (dgvLotesAjuste.Rows.Count == 0) return;
+
+            LotesAjuste = new BindingList<Lote>(Lotes);
+            FillLoteAjuste(LotesAjuste);
+        }
+
+        private void FillLoteAjuste(BindingList<Lote> lotes)
+        {
+            dgvLotesAjuste.DataSource = null;
+            dgvLotesAjuste.AutoGenerateColumns = false;
+            dgvLotesAjuste.ColumnCount = 2;
+
+            dgvLotesAjuste.Columns[0].Name = "#";
+            dgvLotesAjuste.Columns[0].DataPropertyName = "Sequencia";
+            dgvLotesAjuste.Columns[0].Width = 33;
+
+            dgvLotesAjuste.Columns[1].Name = "Siafisico";
+            dgvLotesAjuste.Columns[1].DataPropertyName = "LoteSiafisico";
+            dgvLotesAjuste.Columns[1].Width = 70;
+
+            DataGridViewButtonColumn colAction = new DataGridViewButtonColumn();
+            colAction.UseColumnTextForButtonValue = true;
+            colAction.Text = "Excluir";
+            colAction.Width = 95;
+            dgvLotesAjuste.Columns.Add(colAction);
+
+            var source = new BindingSource(lotes, null);
+            dgvLotesAjuste.DataSource = source;
+        }
+
+        private void dgvLotesAjuste_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvLotesAjuste.Rows.Count == 0)
+            {
+                return;
+            }
+
+            if (e.ColumnIndex == 2)
+            {
+                //Lote loteToRemove = (Lote)dgvLotesAjuste.CurrentRow.DataBoundItem;
+                dgvLotesAjuste.Rows.RemoveAt(e.RowIndex);
+                //LotesAjuste.Remove(loteToRemove);
+                
+            }
+        }
+
+        private void dgvLotesLicitacao_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvLotesLicitacao.Rows.Count == 0)
+            {
+                return;
+            }
+
+            lblNotificacoes.Text = string.Empty;
+
+            if (e.ColumnIndex == 4)
+            {
+                if (LotesAjuste == null)
+                {
+                    LotesAjuste = new BindingList<Lote>();
+                }
+
+                var loteToInsert = (Lote)dgvLotesLicitacao.CurrentRow.DataBoundItem;
+
+                foreach (Lote lote in LotesAjuste)
+                {
+                    if (lote.Equals(loteToInsert))
+                    {
+                        lblNotificacoes.Text = "Item | Lote já inserido.";
+                        return;
+                    }
+                }
+
+                LotesAjuste.Add(loteToInsert);
+
+                dgvLotesAjuste.DataSource = null;
+                FillLoteAjuste(LotesAjuste);
+
+            }
         }
     }
 }

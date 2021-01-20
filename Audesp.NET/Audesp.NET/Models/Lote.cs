@@ -11,5 +11,20 @@ namespace Audesp.NET.Models
         public double Quantidade { get; set; }
         public decimal ValorNegociado { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Lote lote &&
+                   Sequencia == lote.Sequencia;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Sequencia);
+        }
+
+        public override string ToString()
+        {
+            return $"#{Sequencia} - Siafisico:{LoteSiafisico}, Quantidade: {Quantidade:N2}, Valor: {ValorNegociado:C2}";
+        }
     }
 }

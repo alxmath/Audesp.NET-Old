@@ -77,7 +77,7 @@ namespace Audesp.NET
             this.btnPesquisar.Location = new System.Drawing.Point(134, 37);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 6;
+            this.btnPesquisar.TabIndex = 1;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
@@ -87,8 +87,9 @@ namespace Audesp.NET
             this.txtProcesso.Location = new System.Drawing.Point(3, 37);
             this.txtProcesso.Name = "txtProcesso";
             this.txtProcesso.Size = new System.Drawing.Size(125, 23);
-            this.txtProcesso.TabIndex = 5;
+            this.txtProcesso.TabIndex = 0;
             this.txtProcesso.TextChanged += new System.EventHandler(this.txtProcesso_TextChanged);
+            this.txtProcesso.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProcesso_KeyDown);
             // 
             // dgvEmpenhos
             // 
@@ -106,7 +107,7 @@ namespace Audesp.NET
             this.dgvEmpenhos.RowHeadersVisible = false;
             this.dgvEmpenhos.RowTemplate.Height = 25;
             this.dgvEmpenhos.Size = new System.Drawing.Size(1250, 500);
-            this.dgvEmpenhos.TabIndex = 4;
+            this.dgvEmpenhos.TabIndex = 2;
             this.dgvEmpenhos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpenhos_CellContentClick);
             // 
             // label1
@@ -164,6 +165,7 @@ namespace Audesp.NET
             this.Name = "FormSCT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Audesp.NET";
+            this.Load += new System.EventHandler(this.FormSCT_Load);
             this.TabControlPrincipal.ResumeLayout(false);
             this.TabAjuste.ResumeLayout(false);
             this.TabAjuste.PerformLayout();

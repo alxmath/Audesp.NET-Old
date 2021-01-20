@@ -38,7 +38,9 @@ namespace Audesp.NET.Views
             this.label3 = new System.Windows.Forms.Label();
             this.txtCodigoAudespLicitacao = new System.Windows.Forms.TextBox();
             this.groupLotes = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnAddAll = new System.Windows.Forms.Button();
             this.dgvLotesAjuste = new System.Windows.Forms.DataGridView();
             this.dgvLotesLicitacao = new System.Windows.Forms.DataGridView();
             this.lblNotificacoes = new System.Windows.Forms.Label();
@@ -65,6 +67,7 @@ namespace Audesp.NET.Views
             this.txtEmpenho.Location = new System.Drawing.Point(121, 42);
             this.txtEmpenho.MaxLength = 11;
             this.txtEmpenho.Name = "txtEmpenho";
+            this.txtEmpenho.ReadOnly = true;
             this.txtEmpenho.Size = new System.Drawing.Size(187, 23);
             this.txtEmpenho.TabIndex = 1;
             // 
@@ -115,7 +118,9 @@ namespace Audesp.NET.Views
             // 
             // groupLotes
             // 
-            this.groupLotes.Controls.Add(this.button1);
+            this.groupLotes.Controls.Add(this.label5);
+            this.groupLotes.Controls.Add(this.label4);
+            this.groupLotes.Controls.Add(this.btnAddAll);
             this.groupLotes.Controls.Add(this.dgvLotesAjuste);
             this.groupLotes.Controls.Add(this.dgvLotesLicitacao);
             this.groupLotes.Location = new System.Drawing.Point(13, 126);
@@ -125,24 +130,49 @@ namespace Audesp.NET.Views
             this.groupLotes.TabStop = false;
             this.groupLotes.Text = "Lotes";
             // 
-            // button1
+            // label5
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(383, 173);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 26);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(433, 39);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 15);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Lotes do Ajuste:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(40, 39);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 15);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Lotes da Licitação:";
+            // 
+            // btnAddAll
+            // 
+            this.btnAddAll.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAll.Image")));
+            this.btnAddAll.Location = new System.Drawing.Point(383, 173);
+            this.btnAddAll.Name = "btnAddAll";
+            this.btnAddAll.Size = new System.Drawing.Size(44, 26);
+            this.btnAddAll.TabIndex = 3;
+            this.btnAddAll.UseVisualStyleBackColor = true;
+            this.btnAddAll.Click += new System.EventHandler(this.btnAddAll_Click);
             // 
             // dgvLotesAjuste
             // 
+            this.dgvLotesAjuste.AllowUserToAddRows = false;
+            this.dgvLotesAjuste.AllowUserToDeleteRows = false;
+            this.dgvLotesAjuste.AllowUserToResizeRows = false;
             this.dgvLotesAjuste.BackgroundColor = System.Drawing.Color.White;
             this.dgvLotesAjuste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLotesAjuste.Location = new System.Drawing.Point(433, 57);
             this.dgvLotesAjuste.Name = "dgvLotesAjuste";
+            this.dgvLotesAjuste.RowHeadersVisible = false;
             this.dgvLotesAjuste.RowTemplate.Height = 25;
+            this.dgvLotesAjuste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLotesAjuste.Size = new System.Drawing.Size(227, 258);
             this.dgvLotesAjuste.TabIndex = 1;
+            this.dgvLotesAjuste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLotesAjuste_CellContentClick);
             // 
             // dgvLotesLicitacao
             // 
@@ -157,6 +187,7 @@ namespace Audesp.NET.Views
             this.dgvLotesLicitacao.RowTemplate.Height = 25;
             this.dgvLotesLicitacao.Size = new System.Drawing.Size(338, 258);
             this.dgvLotesLicitacao.TabIndex = 0;
+            this.dgvLotesLicitacao.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLotesLicitacao_CellContentClick);
             // 
             // lblNotificacoes
             // 
@@ -230,6 +261,7 @@ namespace Audesp.NET.Views
             this.Text = "Audesp.NET - Ajuste";
             this.Load += new System.EventHandler(this.FormAjuste_Load);
             this.groupLotes.ResumeLayout(false);
+            this.groupLotes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLotesAjuste)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLotesLicitacao)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -253,7 +285,9 @@ namespace Audesp.NET.Views
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.DataGridView dgvLotesAjuste;
         private System.Windows.Forms.DataGridView dgvLotesLicitacao;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddAll;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

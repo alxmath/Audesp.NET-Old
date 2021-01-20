@@ -183,5 +183,20 @@ namespace Audesp.NET
         {
             lblNotificacoes.Text = string.Empty;
         }
+
+        private void txtProcesso_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void FormSCT_Load(object sender, EventArgs e)
+        {
+            TabControlPrincipal.SelectedTab.Name = "TabAjuste";
+        }
     }
 }
