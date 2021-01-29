@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Audesp.NET.Models
 {
-    public class EmpenhoItem
+    public class EmpenhoItemOld
     {
         public string Siafisico { get; set; }
         public string Unidade { get; set; }

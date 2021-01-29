@@ -31,10 +31,58 @@
     <None Update="Libs\right-arrow-add-all.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Schema\ajuste\AUDESP4_AJUSTE_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\auxiliar\AUDESP_TABELASAUXILIARES_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\documentofiscal\AUDESP4_DOCUMENTOFISCAL_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\empenho\AUDESP4_EMPENHO_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\execucao\AUDESP4_EXECUCAO_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\exigenciasobras\AUDESP4_EXIGENCIASOBRAS_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\generico\AUDESP_TIPOSGENERICOS_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\licitacao0\AUDESP4_LIC_REG_SIM_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\licitacao1\AUDESP4_LIC_REG_NAO1_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\licitacao2\AUDESP4_LIC_REG_NAO2_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\licitacao3\AUDESP4_LIC_REG_NAO3_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\pagamento\AUDESP4_PAGAMENTO_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\tagcomum\AUDESP4_COMUM_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Schema\termoaditivo\AUDESP4_TERMOADITIVO_2021_A.XSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Utils\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Audesp.NET-Models">
+      <HintPath>..\..\..\..\..\source\repos\Audesp.NET-Models\Audesp.NET-Models\bin\Debug\netstandard2.0\Audesp.NET-Models.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

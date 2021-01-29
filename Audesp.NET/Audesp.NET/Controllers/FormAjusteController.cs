@@ -26,7 +26,7 @@ namespace Audesp.NET.Controllers
             }
 
             Licitacao licitacao = new Licitacao();
-            Lote lote = new Lote();
+            Lote lote = null;
 
             HtmlNodeCollection lotes = doc.DocumentNode.SelectNodes("//td");
             licitacao.NumeroLicitacao = doc.DocumentNode.SelectSingleNode("//*[@id='id_Cabecalho_Processo']/div/div[1]/span").InnerText.Trim();
@@ -54,6 +54,7 @@ namespace Audesp.NET.Controllers
                             int indexOfSlash = secaoQuantidadePreco.IndexOf("-");
                             int indexOfCifrao = secaoQuantidadePreco.IndexOf("R$");
 
+                            lote = new Lote();
                             lote.Sequencia = contador;
                             lote.LoteSiafisico = contador.ToString();
                             lote.Quantidade = Convert.ToDouble(secaoQuantidadePreco.Substring(indexOfColon + 1, (indexOfSlash - 1) - (indexOfColon + 1)).Trim());
@@ -70,6 +71,7 @@ namespace Audesp.NET.Controllers
                             int indexOfSlash = lotes[i].InnerText.IndexOf("-");
                             indexOfColon = lotes[i].InnerText.IndexOf(":");
 
+                            lote = new Lote();
                             lote.LoteSiafisico = lotes[i].InnerText
                                 .Substring(indexOfColon + 1, (indexOfSlash - 1) - (indexOfColon + 1)).Trim();
 

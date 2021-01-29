@@ -9,7 +9,7 @@ namespace Audesp.NET.Models
         public string Pacote { get; set; }
         public string Documento { get; set; }
         public string Situacao { get; set; }
-        public DateTime DataTransmissao { get; set; }
+        public DateTime? DataTransmissao { get; set; }
         public bool IsEncerrado { get; set; }
     }
 }

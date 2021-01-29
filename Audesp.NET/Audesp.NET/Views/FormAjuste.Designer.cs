@@ -152,7 +152,7 @@ namespace Audesp.NET.Views
             // btnAddAll
             // 
             this.btnAddAll.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAll.Image")));
-            this.btnAddAll.Location = new System.Drawing.Point(401, 172);
+            this.btnAddAll.Location = new System.Drawing.Point(395, 172);
             this.btnAddAll.Name = "btnAddAll";
             this.btnAddAll.Size = new System.Drawing.Size(44, 26);
             this.btnAddAll.TabIndex = 3;

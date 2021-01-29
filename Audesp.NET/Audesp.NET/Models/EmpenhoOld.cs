@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Audesp.NET.Models
 {
-    public class Empenho : ModuloAudesp
+    public class EmpenhoOld : ModuloAudesp
     {
         public enum TipoAjuste
         {
@@ -44,7 +44,19 @@ namespace Audesp.NET.Models
         public decimal ValorPagamentos { get; set; }
         public decimal ValorRecolhimentos { get; set; }
         public decimal ValorCancelamentos { get; set; }
-        public List<EmpenhoItem> Itens { get; set; } = new List<EmpenhoItem>();
+        public string NumeroContratoAdministrativo { get; set; }
+        public string AnoContratoAdministrativo { get; set; }
+        public string ObjetoContrato { get; set; }
+        public double QuantidadeContrato { get; set; }
+        public string UnidadeContrato { get; set; }
+        public Vigencia TipoVigencia { get; set; }
+        public Garantia Garantia { get; set; }
+        public Gestor Gestor { get; set; }
+        public bool HasClausulaPenal { get; set; } = true;
+        public Publicacao Publicacao { get; set; }
+        public string ClausulaFinanceira { get; set; }
+        public string CodigoClassificacaoEconomica { get; set; }
+        public List<EmpenhoItemOld> Itens { get; set; } = new List<EmpenhoItemOld>();
         public TipoDocumento TipoDocumentoCredor
         {
             get  

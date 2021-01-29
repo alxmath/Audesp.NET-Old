@@ -1,4 +1,6 @@
-﻿using Audesp.NET.Models;
+﻿//using Audesp.NET.Models;
+using AudespNETModels.Models;
+using AudespNETModels.Models.Enums;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -40,18 +42,18 @@ namespace Audesp.NET.Dao
                             CodigoAjuste = reader["codigo_ajuste"].ToString(),
                             CodigoAudespLicitacao = reader["codigo_audesp_licitacao"].ToString(),
                             NaturezaDespesa = reader["natureza_despesa"].ToString(),
-                            Modalidade = (Empenho.TipoAjuste)Convert.ToInt32(reader["modalidade"]),
+                            Modalidade = (TipoAjuste)Convert.ToInt32(reader["modalidade"]),
                             Valor = Convert.ToDecimal(reader["valor"]),
                             Emissao = Convert.ToDateTime(reader["emissao"]),
                             CredorDocumento = reader["credor_documento"].ToString(),
                             FonteRecursos = reader["fonte_recursos"].ToString(),
                             NumeroLicitacao = reader["numero_licitacao"].ToString(),
                             Processo = reader["numero_processo"].ToString(),
-                            //NumeroContratoAdministrativo = reader["numero_contrato_adm"].ToString(),
-                            //AnoContratoAdministrativo = reader["ano_contrato_adm"].ToString(),
-                            //ObjetoContrato = reader["objeto_contrato"].ToString(),
-                            //QuantidadeContrato = Convert.ToDouble(reader["qtd_contrato"]),
-                            //UnidadeContrato = reader["und_contrato"].ToString(),
+                            NumeroContratoAdministrativo = reader["numero_contrato_adm"].ToString(),
+                            AnoContratoAdministrativo = reader["ano_contrato_adm"].ToString(),
+                            ObjetoContrato = reader["objeto_contrato"].ToString(),
+                            QuantidadeContrato = Convert.ToDouble(reader["qtd_contrato"]),
+                            UnidadeContrato = reader["und_contrato"].ToString(),
                             DataEstimadaEntrega = Convert.ToDateTime(reader["dt_estimada_entrega"]),
                             TipoLicitacao = reader["tipo_licitacao"].ToString(),
                             Pacote = reader["pacote"].ToString(),

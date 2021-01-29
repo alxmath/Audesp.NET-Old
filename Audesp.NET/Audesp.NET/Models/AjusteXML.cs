@@ -6,7 +6,10 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
-using static Audesp.NET.Models.Empenho;
+
+using AudespNETModels.Models;
+using AudespNETModels.Models.Enums;
+//using static Audesp.NET.Models.Empenho;
 
 namespace Audesp.NET.Models
 {
@@ -14,7 +17,7 @@ namespace Audesp.NET.Models
     {
 
         private readonly Empenho _empenho;
-        public static string XmlDirectory { get; } = @"schemas\xml";
+        public static string XmlDirectory { get; } = @"Schema\xml";
 
         public AjusteXML(Empenho empenho)
         {
@@ -32,7 +35,7 @@ namespace Audesp.NET.Models
             }
 
             //string filename = @"schemas\xml\ajuste.xml";
-            string filename = $@"{XmlDirectory}\ajuste.xml";
+            string filename = $@"{XmlDirectory}\ajuste_{_empenho.NumeroEmpenho}.xml";
             string xsdLocation = ConfigurationManager.AppSettings["XSDLocation"];
 
             XmlTextWriter xmlWriter = new XmlTextWriter(filename, Encoding.UTF8)
@@ -75,7 +78,7 @@ namespace Audesp.NET.Models
             xmlWriter.WriteElementString("ns3:LicitacaoProprioOrgaoSim", "S");
             xmlWriter.WriteElementString("ns3:CodigoLicitacao", _empenho.CodigoAudespLicitacao);
 
-            if (_empenho.Modalidade == Empenho.TipoAjuste.Empenho) // Se nota de empenho doc similar
+            if (_empenho.Modalidade == TipoAjuste.Empenho) // Se nota de empenho doc similar
             {
                 xmlWriter.WriteComment("NotaEmpenhoDocSimilar");
                 xmlWriter.WriteStartElement("ns3:NotaEmpenhoDocSimilar"); // inicio da tag NotaEmpenhoDocSimilar
@@ -113,12 +116,12 @@ namespace Audesp.NET.Models
                 xmlWriter.WriteElementString("ns3:NumeroLotes", "1");
 
 
-                //xmlWriter.WriteElementString("ns3:NumContrato", _empenho.NumeroContratoAdministrativo);
-                //xmlWriter.WriteElementString("ns3:AnoContrato", _empenho.AnoContratoAdministrativo);
-                //xmlWriter.WriteElementString("ns3:ValorContrato", _empenho.Valor.ToString(CultureInfo.InvariantCulture));
-                //xmlWriter.WriteElementString("ns3:ObjetoContrato", _empenho.ObjetoContrato);
-                //xmlWriter.WriteElementString("ns3:Quantidade", _empenho.QuantidadeContrato.ToString(CultureInfo.InvariantCulture));
-                //xmlWriter.WriteElementString("ns3:UnidadeMedida", _empenho.UnidadeContrato);
+                xmlWriter.WriteElementString("ns3:NumContrato", _empenho.NumeroContratoAdministrativo);
+                xmlWriter.WriteElementString("ns3:AnoContrato", _empenho.AnoContratoAdministrativo);
+                xmlWriter.WriteElementString("ns3:ValorContrato", _empenho.Valor.ToString(CultureInfo.InvariantCulture));
+                xmlWriter.WriteElementString("ns3:ObjetoContrato", _empenho.ObjetoContrato);
+                xmlWriter.WriteElementString("ns3:Quantidade", _empenho.QuantidadeContrato.ToString(CultureInfo.InvariantCulture));
+                xmlWriter.WriteElementString("ns3:UnidadeMedida", _empenho.UnidadeContrato);
 
                 SetDocumento(_empenho.TipoDocumentoCredor, xmlWriter);
 
@@ -141,9 +144,9 @@ namespace Audesp.NET.Models
                  * 1: Receita
                  * 2: Despesa
                  */
-                //xmlWriter.WriteElementString("ns1:TipoClassificacaoEconomica", "2");
-                //xmlWriter.WriteElementString("ns1:CodigoClassificacaoEconomica", _empenho.CodigoClassificacaoEconomica);
-                //xmlWriter.WriteEndElement(); // fim tag ClassificacaoEconomica
+                xmlWriter.WriteElementString("ns1:TipoClassificacaoEconomica", "2");
+                xmlWriter.WriteElementString("ns1:CodigoClassificacaoEconomica", _empenho.CodigoClassificacaoEconomica);
+                xmlWriter.WriteEndElement(); // fim tag ClassificacaoEconomica
 
                 #endregion
 
@@ -276,22 +279,22 @@ namespace Audesp.NET.Models
 
             Console.WriteLine("Documento escrito");
 
-            ValidateXML($@"{XmlDirectory}\ajuste.xml");
+            ValidateXML($@"{XmlDirectory}\ajuste_{_empenho.NumeroEmpenho}.xml");
             Console.ReadLine();
             //System.Threading.Thread.Sleep(1000);
         }
 
-        private void SetDocumento(Empenho.TipoDocumento documento, XmlTextWriter xmlWriter)
+        private void SetDocumento(TipoDocumento documento, XmlTextWriter xmlWriter)
         {
             switch (documento)
             {
-                case Empenho.TipoDocumento.Cnpj:
+                case TipoDocumento.Cnpj:
                     xmlWriter.WriteElementString("ns3:CNPJ", _empenho.CredorDocumento);
                     break;
-                case Empenho.TipoDocumento.Cpf:
+                case TipoDocumento.Cpf:
                     xmlWriter.WriteElementString("ns3:CPF", _empenho.CredorDocumento);
                     break;
-                case Empenho.TipoDocumento.OutroDoc:
+                case TipoDocumento.OutroDoc:
                     xmlWriter.WriteElementString("ns3:OutroDoc", _empenho.CredorDocumento);
                     break;
                 default:
