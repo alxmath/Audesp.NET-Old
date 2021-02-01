@@ -1,10 +1,9 @@
-﻿//using Audesp.NET.Models;
+﻿using Audesp.NET_Models.Models.Structs;
 using AudespNETModels.Models;
 using AudespNETModels.Models.Enums;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Audesp.NET.Dao
 {
@@ -36,6 +35,7 @@ namespace Audesp.NET.Dao
                 {
                     while (reader.Read())
                     {
+                        
                         var empenho = new Empenho()
                         {
                             NumeroEmpenho = reader["numero_empenho"].ToString(),
@@ -45,7 +45,7 @@ namespace Audesp.NET.Dao
                             Modalidade = (TipoAjuste)Convert.ToInt32(reader["modalidade"]),
                             Valor = Convert.ToDecimal(reader["valor"]),
                             Emissao = Convert.ToDateTime(reader["emissao"]),
-                            CredorDocumento = reader["credor_documento"].ToString(),
+                            Fornecedor = new Fornecedor(reader["credor_documento"].ToString()),
                             FonteRecursos = reader["fonte_recursos"].ToString(),
                             NumeroLicitacao = reader["numero_licitacao"].ToString(),
                             Processo = reader["numero_processo"].ToString(),

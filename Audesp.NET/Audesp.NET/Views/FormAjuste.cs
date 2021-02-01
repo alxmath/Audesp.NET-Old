@@ -1,10 +1,14 @@
 ﻿using Audesp.NET.Controllers;
 using Audesp.NET.Models;
+using Audesp.NET.Xml.Models;
+using Audesp.NET.Xml.XmlService;
+using Audesp.NET_Models.Models.Structs;
 //using Audesp.NET.Models;
 using AudespNETModels.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -57,8 +61,25 @@ namespace Audesp.NET.Views
             Empenho.CodigoAudespLicitacao = txtCodigoAudespLicitacao.Text.Trim();
             Empenho.NumeroLicitacao = txtLicitacao.Text.Trim();
 
-            AjusteXML ajusteXML = new AjusteXML(Empenho);
-            ajusteXML.GerarXML();
+            //var fornecedor = new Fornecedor
+            //{
+            //    Nome = "Master Hospitalar Teste"
+            //};
+
+            //Empenho.Fornecedor = fornecedor;
+
+
+            string xsdLocation = ConfigurationManager.AppSettings["XSDLocation"];
+            string filename = $@"Schema\xml\Ajuste_{Empenho.CodigoAjuste}_{Empenho.NumeroEmpenho}.xml";
+            var ajusteModulo = new AjusteModulo(Empenho, xsdLocation, filename);
+
+            var xmlService = new XmlService();
+            var xmlAjuste = xmlService.GerarXml(ajusteModulo);
+
+            MessageBox.Show(xmlAjuste.ToString());
+
+            //AjusteXML ajusteXML = new AjusteXML(Empenho);
+            //ajusteXML.GerarXML();
 
         }
 

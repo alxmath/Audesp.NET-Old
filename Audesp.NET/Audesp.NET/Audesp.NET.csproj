@@ -81,7 +81,10 @@
 
   <ItemGroup>
     <Reference Include="Audesp.NET-Models">
-      <HintPath>..\..\..\..\..\source\repos\Audesp.NET-Models\Audesp.NET-Models\bin\Debug\netstandard2.0\Audesp.NET-Models.dll</HintPath>
+      <HintPath>..\..\..\Audesp.NET-Models\Audesp.NET-Models\bin\Debug\netstandard2.0\Audesp.NET-Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Audesp.NET.Xml">
+      <HintPath>..\..\..\Audesp.NET.Xml\Audesp.NET.Xml\bin\Debug\netcoreapp3.1\Audesp.NET.Xml.dll</HintPath>
     </Reference>
   </ItemGroup>
 

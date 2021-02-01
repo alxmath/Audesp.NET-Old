@@ -3,4 +3,10 @@
 	<connectionStrings>
 		<add name="MysqlConnection" connectionString="SERVER=localhost; DATABASE=mydatabase; UID=root; PWD=mysupersecretpassword;"/>
 	</connectionStrings>
+
+	<appSettings>
+		<!-- determina a versão dos XSD's para os XML's -->
+		<add key="XSDLocation" value="../ajuste/AUDESP4_AJUSTE_2021_A.XSD"/>
+	</appSettings>
+
 </configuration>
